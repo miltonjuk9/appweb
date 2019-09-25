@@ -6,7 +6,7 @@ services:
     depends_on:
       - mysql:mysql
     ports:
-      - 8080:80
+      - 6000:80
     networks:
       - frontend
     deploy:
