@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  wordpress:
+    image: wordpress
+    depends_on:
+      - mysql:mysql
+    ports:
+      - 6060:80
+    networks:
+      - frontend
+    deploy:
+      replicas: 6
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == worker]
+
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - frontend
+    deploy:
+      placement:
+        constraints: [node.role == worker]
