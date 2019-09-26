@@ -25,3 +25,6 @@ services:
     deploy:
       placement:
         constraints: [node.role == worker]
+
+networks:
+  frontend:
